@@ -6,7 +6,7 @@ const BASE_URL =
 
 function App() {
 	const [currencyOptions, setCurrencyOptions] = useState([])
-	const [fromCurrency, setFromCurrency] = useState()
+	const [fromCurrency, setFromCurrency] = useState("USD")
 	const [toCurrency, setToCurrency] = useState()
 	const [exchangeRate, setExchangeRate] = useState()
 	const [amount, setAmount] = useState(1)
@@ -22,7 +22,7 @@ function App() {
 	}
 
 	useEffect(() => {
-		fetch(`${BASE_URL}USD`)
+		fetch(`${BASE_URL}${fromCurrency}`)
 			.then((res) => res.json())
 			.then((data) => {
 				const firstCurrency = Object.keys(data.conversion_rates)[1]
